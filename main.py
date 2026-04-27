@@ -1,13 +1,18 @@
 import chromadb
 from fastapi import FastAPI
-
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+from pathlib import Path
 
 app = FastAPI()
 
 db = chromadb.Client()
 
 collection = db.create_collection(name = 'documents')
+
+@app.get("/")
+def root():
+    return FileResponse(str(Path(__file__).resolve().parent / "static" / "index.html"))
 
 collection.add(
     ids = [
@@ -63,4 +68,16 @@ def get_documents():
         documents.append(dictionary)
     return documents
 
-app.mount("/", StaticFiles(directory="static", html=True), name="static")
+@app.get('/search')
+def search_documents(query: str):
+    results = collection.query(query_texts=[query], n_results=5)
+    docs = []
+    for i in range(5):
+        dictionary = {
+            "id": results["ids"][0][i],
+            "document": results["documents"][0][i],
+            "distance": results["distances"][0][i]
+        }
+        docs.append(dictionary)
+    return docs
+app.mount("/static", StaticFiles(directory="static"), name="static")
