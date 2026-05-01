@@ -1,0 +1,81 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f7fafc;
+  color: #102a43;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+h1 {
+  margin-bottom: 0.25rem;
+  font-size: clamp(2rem, 2.4vw, 2.75rem);
+}
+
+.subtitle {
+  margin-top: 0.25rem;
+  color: #486581;
+}
+
+#chunk-count {
+  margin: 1.5rem 0 0.75rem;
+  font-weight: 600;
+}
+
+.chunk-list {
+  display: grid;
+  gap: 20px;
+}
+
+.chunk-card {
+  padding: 20px;
+  background: white;
+  border: 1px solid #d9e2ec;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(16, 42, 67, 0.08);
+}
+
+.chunk-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+.chunk-length {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #334e68;
+}
+
+.chunk-card pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+  padding: 16px;
+  background: #f1f5f9;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+.error-message {
+  margin-top: 1rem;
+  color: #ba1a1a;
+  font-weight: 600;
+}
+
+.empty {
+  color: #627d98;
+}
